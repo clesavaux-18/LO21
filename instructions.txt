@@ -1,0 +1,10 @@
+-traduire la phase de teste de l'expertisse donné par le prof
+-base de conaissance :
+  liste chainé<chaines de charactères> (création vide, test si vide, recherche, ajout en tete(queue), supprimer nimporte ou ,supprimer tout)
+-base de règles :
+  arbres binaires<chaines de charactères>: remplissage en  proffondeur priorité a gauche postfixé 
+  parcour pareil que remplissage
+  deconstruction de la phrase
+-interface graphique
+
+  
