@@ -14,6 +14,7 @@ listc insererTete (listc l, int e) {
     new->next = l;
     return new;
 }
+//Arthur :)
 bool siVide(listc l) {
     if (l == NULL) {
         return NULL;
