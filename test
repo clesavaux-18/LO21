@@ -1,1 +1,30 @@
-printf hello world
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+typedef struct elem {
+    int value;
+    struct elem *next;
+}element;
+typedef element* listc;
+
+listc insererTete (listc l, int e) {
+    element *new = (element *)malloc(sizeof(element));
+    new->value = e;
+    new->next = l;
+    return new;
+}
+bool siVide(listc l) {
+    if (l == NULL) {
+        return NULL;
+    }return 1;
+}
+bool recherche(listc l, int e) {
+    if (l != NULL) {
+        if (l->value == e) {
+            return 1;
+        }else {return recherche(l->next, e);}
+    }else {
+        return NULL;
+    }
+}
