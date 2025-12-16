@@ -1,11 +1,12 @@
 -traduire la phase de teste de l'expertisse donné par le prof
 -base de fait :
   liste chainé<chaines de charactères> (création vide, test si vide, recherche, ajout en tete(queue), supprimer nimporte ou ,supprimer tout)
--base de règles :
+-base de règles = base de connaissance :
   lise chainée<chaines de charactères>: remplissage en  proffondeur priorité a gauche postfixé 
   parcour pareil que remplissage
   deconstruction de la phrase
 -interface graphique
 
   Quand soutenance ? Et c'est quoi ? Diff entre base de faot et de connaissance ?
+Rapport avant lundi rentrée midi : mail arrive
 
