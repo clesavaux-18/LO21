@@ -6,11 +6,11 @@
 
 
 regle* creerRegleVide() {
-    // alocation memoire
+    
     regle *nouvelleRegle = (regle *)malloc(sizeof(regle));
 
 
-    // 3. Initialisation 
+    
     nouvelleRegle->premisse = NULL;      // La liste des prémisses est vide (NULL)
     nouvelleRegle->conclusion[0] = '\0'; // La conclusion est une chaîne vide pour l'instant
 
@@ -20,7 +20,7 @@ regle* creerRegleVide() {
 
 
 /*
-remplir la conclusion
+remplir la conclusion. prend en paramètre r une liste 
  */
 void saisirConclusion(regle *r) {
     if (r == NULL) {
@@ -42,7 +42,7 @@ void saisirConclusion(regle *r) {
 }
 
 /*
-affiche la conclusion d'une règle.
+affiche la conclusion d'une règle. prend en paramètre une règle r
  */
 void afficherConclusion(regle *r) {
     // verif regle
@@ -62,7 +62,7 @@ void afficherConclusion(regle *r) {
 
 
 /*
- ajoute unne premisse
+ ajoute unne premisse. prend en paramètre une règle et une proposition(chaine de charactère) et retounre une règle mise a jour 
  */
 regle *ajouterPremisse(regle *r, char *texte) {
     if (r == NULL) return NULL; // Sécurité
@@ -87,15 +87,12 @@ regle *ajouterPremisse(regle *r, char *texte) {
 }
 
 /*
-teste si la prémisse d'une règle est vide 
+teste si la prémisse d'une règle est vide , prend en paramètre une règle
  */
 int premisseEstVide(regle *r) {
-   
     if (r == NULL) {
         return 1;
     }
-
-
     if (r->premisse == NULL) {
         return 1;
     } else {
@@ -103,7 +100,9 @@ int premisseEstVide(regle *r) {
     }
 }
 
-int rechercheRecursive(prem *p, char *cible) {
+//recherche une proposition dans la premisse, prend en paramètre  
+//return 1 si trouvé et 0 si ce n'est pas le cas
+int rechercheRecursive(prem *p, char *proposition) {
     if (p == NULL) {
         return 0; 
     } 
@@ -112,7 +111,7 @@ int rechercheRecursive(prem *p, char *cible) {
             return 1; 
         } 
         else {
-             return rechercheRecursive(p->next, cible);
+             return rechercheRecursive(p->next, proposition);
         }
     }
 }
