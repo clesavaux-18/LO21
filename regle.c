@@ -58,3 +58,61 @@ void afficherConclusion(regle *r) {
 	    }
     }
 }
+
+
+
+/*
+ ajoute unne premisse
+ */
+regle *ajouterPremisse(regle *r, char *texte) {
+    if (r == NULL) return NULL; // Sécurité
+
+    prem *nouvellePrem = (prem *)malloc(sizeof(prem));
+
+    strncpy(nouvellePrem->proposition, texte, 999);
+    nouvellePrem->proposition[999] = '\0'; 
+    nouvellePrem->next = NULL;
+    
+    if (premisseEstVide(r)) {
+        r->premisse = nouvellePrem;
+    } else {
+        prem *p = r->premisse;
+        while (p->next != NULL) {
+            p = p->next;
+        }
+        p->next = nouvellePrem;
+    }
+
+    return r;
+}
+
+/*
+teste si la prémisse d'une règle est vide 
+ */
+int premisseEstVide(regle *r) {
+   
+    if (r == NULL) {
+        return 1;
+    }
+
+
+    if (r->premisse == NULL) {
+        return 1;
+    } else {
+        return 0; 
+    }
+}
+
+int rechercheRecursive(prem *p, char *cible) {
+    if (p == NULL) {
+        return 0; 
+    } 
+    else {
+        if (strcmp(p->proposition, cible) == 0) {
+            return 1; 
+        } 
+        else {
+             return rechercheRecursive(p->next, cible);
+        }
+    }
+}
