@@ -105,7 +105,7 @@ int rechercheRecursive(prem *p, char *proposition) {
         return 0; 
     } 
     else {
-        if (strcmp(p->proposition, cible) == 0) {
+        if (strcmp(p->proposition, proposition) == 0) {
             return 1; 
         } 
         else {
