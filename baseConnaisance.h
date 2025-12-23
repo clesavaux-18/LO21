@@ -6,11 +6,11 @@
 #include "regle.h"
 
 typedef struct elemBC {
-	 regle *connaisance;
+	 regle *connaissance;
 	 struct elemBC *next;
 } elementBC;
 
-typedef elementBC * BaseConnaisance;
+typedef elementBC * BaseConnaissance;
 //fonction1
 //fonction2
 //fonction3
