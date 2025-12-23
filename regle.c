@@ -9,10 +9,8 @@ regle* creerRegleVide() {
     
     regle *nouvelleRegle = (regle *)malloc(sizeof(regle));
 
-
-    
-    nouvelleRegle->premisse = NULL;      // La liste des prémisses est vide (NULL)
-    nouvelleRegle->conclusion[0] = '\0'; // La conclusion est une chaîne vide pour l'instant
+    nouvelleRegle->premisse = NULL;     
+    nouvelleRegle->conclusion[0] = '\0'; 
 
     return nouvelleRegle;
 }
@@ -114,4 +112,39 @@ int rechercheRecursive(prem *p, char *proposition) {
              return rechercheRecursive(p->next, proposition);
         }
     }
+}
+
+
+/*supprime texte de premisse
+ */
+regle *supprimerPremisse(regle *r, char *texte) {
+    
+    if (r == NULL) return NULL;
+    if (premisseEstVide(r)) return r; // Rien à supprimer si vide
+
+    prem *courant = r->premisse;
+    prem *precedent = NULL;
+
+    // cas 1: element en tete
+    if (strcmp(courant->proposition, texte) == 0) {
+        r->premisse = courant->next; 
+        free(courant); 
+        return r;
+    }
+
+    // cas 2 element au milieux
+    // On parcourt tant qu'on n'est pas à la fin ET qu'on n'a pas trouvé le texte
+    while (courant != NULL && strcmp(courant->proposition, texte) != 0) {
+        precedent = courant;       
+        courant = courant->next;   
+    }
+
+    // Si courant n'est pas NULL, element trouvé
+    if (courant != NULL) {
+        // On "saute" l'élément courant en reliant le précédent au suivant
+        precedent->next = courant->next;
+        free(courant); 
+    }
+
+    return r;
 }
