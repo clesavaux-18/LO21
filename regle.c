@@ -65,7 +65,7 @@ void afficherConclusion(regle *r) {
 regle *ajouterPremisse(regle *r, char *texte) {
     if (r == NULL) return NULL; // Sécurité
 
-    prem *nouvellePrem = (prem *)malloc(sizeof(prem));
+    element *nouvellePrem = (element *)malloc(sizeof(element));
 
     strncpy(nouvellePrem->proposition, texte, 999);
     nouvellePrem->proposition[999] = '\0'; 
@@ -74,7 +74,7 @@ regle *ajouterPremisse(regle *r, char *texte) {
     if (premisseEstVide(r)) {
         r->premisse = nouvellePrem;
     } else {
-        prem *p = r->premisse;
+        element *p = r->premisse;
         while (p->next != NULL) {
             p = p->next;
         }
@@ -100,7 +100,7 @@ int premisseEstVide(regle *r) {
 
 //recherche une proposition dans la premisse, prend en paramètre  
 //return 1 si trouvé et 0 si ce n'est pas le cas
-int rechercheRecursive(prem *p, char *proposition) {
+int rechercheRecursive(element *p, char proposition) {
     if (p == NULL) {
         return 0; 
     } 
@@ -117,7 +117,7 @@ int rechercheRecursive(prem *p, char *proposition) {
 
 /*supprime texte de premisse
  */
-regle *supprimerPremisse(regle *r, char *texte) {
+regle *supprimerPremisse(regle *r, char texte) {
     
     if (r == NULL) return NULL;
     if (premisseEstVide(r)) return r; // Rien à supprimer si vide
