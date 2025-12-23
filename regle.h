@@ -3,12 +3,12 @@
 #include <string.h> 
 
 
-typedef struct listePrem {
+typedef struct elem {
      char proposition[1000];
-     struct listePrem *next;
-} prem;
+     struct elem *next;
+} element;
 
-typedef prem *premisse;
+typedef element *premisse;
 
 
 typedef struct {
