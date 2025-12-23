@@ -3,23 +3,15 @@
 #include <string.h> 
 #include "regle.h"
 
-
-
 regle* creerRegleVide() {
-    
-    regle *nouvelleRegle = (regle *)malloc(sizeof(regle));
+    regle *nouvelleRegle = (regle *)malloc(sizeof(regle))
 
-    nouvelleRegle->premisse = NULL;     
+    nouvelleRegle->premisse = NULL;      
     nouvelleRegle->conclusion[0] = '\0'; 
 
     return nouvelleRegle;
 }
 
-
-
-/*
-remplir la conclusion. prend en paramètre r une liste 
- */
 void saisirConclusion(regle *r) {
     if (r == NULL) {
         printf("Erreur : La règle fournie est vide (NULL).\n");
@@ -28,10 +20,7 @@ void saisirConclusion(regle *r) {
 
     printf("Entrez la conclusion de la regle : ");
 
-    // remplissage 
     if (fgets(r->conclusion, 1000, stdin) != NULL) {
-        
-        // on enlève l'eventuel saut de ligne de fgets
         size_t len = strlen(r->conclusion);
         if (len > 0 && r->conclusion[len - 1] == '\n') {
             r->conclusion[len - 1] = '\0';
@@ -39,33 +28,21 @@ void saisirConclusion(regle *r) {
     }
 }
 
-/*
-affiche la conclusion d'une règle. prend en paramètre une règle r
- */
 void afficherConclusion(regle *r) {
-    // verif regle
     if (r != NULL) {
-       
-    
-
-	    // verif conclusion
-	    if (r->conclusion[0] == '\0') {
-		printf("Cette regle n'a pas encore de conclusion.\n");
-	    } else {
-		printf("Conclusion : %s\n", r->conclusion);
-	    }
+        if (r->conclusion[0] == '\0') {
+            printf("Cette regle n'a pas encore de conclusion.\n");
+        } else {
+            printf("Conclusion : %s\n", r->conclusion);
+        }
     }
 }
 
-
-
-/*
- ajoute unne premisse. prend en paramètre une règle et une proposition(chaine de charactère) et retounre une règle mise a jour 
- */
 regle *ajouterPremisse(regle *r, char *texte) {
-    if (r == NULL) return NULL; // Sécurité
+    if (r == NULL) return NULL; 
 
     element *nouvellePrem = (element *)malloc(sizeof(element));
+    if (nouvellePrem == NULL) return NULL;
 
     strncpy(nouvellePrem->proposition, texte, 999);
     nouvellePrem->proposition[999] = '\0'; 
@@ -74,7 +51,7 @@ regle *ajouterPremisse(regle *r, char *texte) {
     if (premisseEstVide(r)) {
         r->premisse = nouvellePrem;
     } else {
-        element *p = r->premisse;
+        element *p = r->premisse; // 'element' ici aussi
         while (p->next != NULL) {
             p = p->next;
         }
@@ -84,13 +61,8 @@ regle *ajouterPremisse(regle *r, char *texte) {
     return r;
 }
 
-/*
-teste si la prémisse d'une règle est vide , prend en paramètre une règle
- */
 int premisseEstVide(regle *r) {
-    if (r == NULL) {
-        return 1;
-    }
+    if (r == NULL) return 1;
     if (r->premisse == NULL) {
         return 1;
     } else {
@@ -98,13 +70,12 @@ int premisseEstVide(regle *r) {
     }
 }
 
-//recherche une proposition dans la premisse, prend en paramètre  
-//return 1 si trouvé et 0 si ce n'est pas le cas
-int rechercheRecursive(element *p, char proposition) {
+int rechercheRecursive(element *p, char *proposition) {
     if (p == NULL) {
         return 0; 
     } 
     else {
+        // strcmp ne marche qu'avec des pointeurs (char*)
         if (strcmp(p->proposition, proposition) == 0) {
             return 1; 
         } 
@@ -114,18 +85,16 @@ int rechercheRecursive(element *p, char proposition) {
     }
 }
 
-
-/*supprime texte de premisse
- */
-regle *supprimerPremisse(regle *r, char texte) {
+regle *supprimerPremisse(regle *r, char *texte) {
     
     if (r == NULL) return NULL;
-    if (premisseEstVide(r)) return r; // Rien à supprimer si vide
+    if (premisseEstVide(r)) return r; 
 
-    prem *courant = r->premisse;
-    prem *precedent = NULL;
 
-    // cas 1: element en tete
+    element *courant = r->premisse;
+    element *precedent = NULL;
+
+    // cas 1 element en tete
     if (strcmp(courant->proposition, texte) == 0) {
         r->premisse = courant->next; 
         free(courant); 
@@ -133,15 +102,12 @@ regle *supprimerPremisse(regle *r, char texte) {
     }
 
     // cas 2 element au milieux
-    // On parcourt tant qu'on n'est pas à la fin ET qu'on n'a pas trouvé le texte
     while (courant != NULL && strcmp(courant->proposition, texte) != 0) {
         precedent = courant;       
         courant = courant->next;   
     }
 
-    // Si courant n'est pas NULL, element trouvé
     if (courant != NULL) {
-        // On "saute" l'élément courant en reliant le précédent au suivant
         precedent->next = courant->next;
         free(courant); 
     }
