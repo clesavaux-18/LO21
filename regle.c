@@ -4,7 +4,7 @@
 #include "regle.h"
 
 regle* creerRegleVide() {
-    regle *nouvelleRegle = (regle *)malloc(sizeof(regle));
+    regle *nouvelleRegle = (regle *)malloc(sizeof(regle));//alocation dynamique donc pointeur vers un  une règle 
 
     nouvelleRegle->premisse = NULL;      
     nouvelleRegle->conclusion[0] = '\0'; 
