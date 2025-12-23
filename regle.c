@@ -86,31 +86,38 @@ int rechercheRecursive(element *p, char *proposition) {
 }
 
 regle *supprimerPremisse(regle *r, char *texte) {
-    
+    // verif
     if (r == NULL) return NULL;
-    if (premisseEstVide(r)) return r; 
 
-
-    element *courant = r->premisse;
-    element *precedent = NULL;
-
-    // cas 1 element en tete
-    if (strcmp(courant->proposition, texte) == 0) {
-        r->premisse = courant->next; 
-        free(courant); 
+    // 2. Si la liste est vide 
+    if (r->premisse == NULL) {
         return r;
     }
 
-    // cas 2 element au milieux
-    while (courant != NULL && strcmp(courant->proposition, texte) != 0) {
-        precedent = courant;       
-        courant = courant->next;   
+    // 3. Cas élément à supprimer est la TÊTE (l->value == e)
+    if (strcmp(r->premisse->proposition, texte) == 0) {
+        element *tmp = r->premisse;
+        r->premisse = r->premisse->next; // On décale la tête
+        free(tmp);
+        return r;
     }
 
-    if (courant != NULL) {
-        precedent->next = courant->next;
-        free(courant); 
+    // 4. Cas où c'est ailleurs 
+    // On s'arrête si la fin est proche OU si le SUIVANT est celui qu'on cherche
+    element *p = r->premisse;
+    while (p->next != NULL && strcmp(p->next->proposition, texte) != 0) {
+        p = p->next;
     }
 
-    return r;
+    // 5. Vérification après la boucle
+    if (p->next == NULL) {
+        // On est arrivé au bout sans trouver
+        return r;
+    } else {
+        // On a trouvé : p->next est l'élément à supprimer
+        element *tmp = p->next;
+        p->next = tmp->next; // On saute l'élément
+        free(tmp);
+        return r;
+    }
 }
