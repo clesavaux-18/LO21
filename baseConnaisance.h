@@ -6,7 +6,7 @@
 #include "regle.h"
 
 typedef struct elemBC {
-	 regle connaisance;
+	 regle *connaisance;
 	 struct elem *next;
 } elementBC;
 
