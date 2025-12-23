@@ -4,7 +4,7 @@
 #include "regle.h"
 
 regle* creerRegleVide() {
-    regle *nouvelleRegle = (regle *)malloc(sizeof(regle))
+    regle *nouvelleRegle = (regle *)malloc(sizeof(regle));
 
     nouvelleRegle->premisse = NULL;      
     nouvelleRegle->conclusion[0] = '\0'; 
