@@ -7,7 +7,7 @@
 
 typedef struct elemBC {
 	 regle *connaisance;
-	 struct elem *next;
+	 struct elemBC *next;
 } elementBC;
 
 typedef elementBC * BaseConnaisance;
