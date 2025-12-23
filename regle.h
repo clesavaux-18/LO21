@@ -21,5 +21,5 @@ void saisirConclusion(regle *r);
 void afficherConclusion(regle *r);
 regle *ajouterPremisse(regle *r, char *texte);
 int premisseEstVide(regle *r);
-int rechercheRecursive(prem *p, char *proposition) ;
+int rechercheRecursive(element *p, char *proposition) ;
 regle *supprimerPremisse(regle *r, char *texte);
