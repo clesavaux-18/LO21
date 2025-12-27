@@ -1,0 +1,12 @@
+-traduire la phase de teste de l'expertisse donné par le prof
+-base de fait :
+  liste chainé<chaines de charactères> (création vide, test si vide, recherche, ajout en tete(queue), supprimer nimporte ou ,supprimer tout)
+-base de règles = base de connaissance :
+  -lise chainée<regeles>:ajout en queue:créer base de connaisance vide/accéder a la règle en tete/ajouer
+  -regles:premisse:liste chainé<chaines de charactère> et conclusion:chaine de charactère / créer regle vide / ajout de proposition dans la premisse (en queue)/ajouter conclusion/suprimer un premisse/proposition en tete de premisses/acceder conclusion
+  
+-interface graphique
+
+  Quand soutenance ? Et c'est quoi ? Diff entre base de faot et de connaissance ?
+Rapport avant lundi rentrée midi : mail arrive
+
