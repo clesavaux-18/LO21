@@ -1,10 +1,14 @@
 #include "baseConnaissance.h"
 #include <stdbool.h>
 
+/*-----------------------------------------/CREATION/---------------------------------------------------------------------------------------------------*/
+
 //lise chainée<regeles>:ajout en queue:créer base de connaisance vide/accéder a la règle en tete
 BaseConnaissance creerBaseConnaissanceVide() {
     return NULL;
 }
+
+/*-----------------------------------------/VERIFICATIONS/---------------------------------------------------------------------------------------------------*/
 
 //prend en paramètre une base de connaisace BC.elle renvoie 1 si oui et 0 si non.
 bool estVideBaseConnaissance(BaseConnaissance BC) {
@@ -13,6 +17,8 @@ bool estVideBaseConnaissance(BaseConnaissance BC) {
         return 1;
     }return 0;
 }
+
+/*-----------------------------------------/OPERATIONS/---------------------------------------------------------------------------------------------------*/
 
 //prend en paramètre une base de connaisance BC et un pointeur vers une regle e .Le programe retourne la BC avec la règle e ajouté a cellle ci 
 BaseConnaissance insererQueueBaseConnaissance(BaseConnaissance BC, regle *e) {
