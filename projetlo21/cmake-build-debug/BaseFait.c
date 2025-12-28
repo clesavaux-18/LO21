@@ -1,16 +1,18 @@
 
 
+
+#include <string.h>
 #include "BaseFait.h"
 
 
-listf insererQueue(listf l, int e) {
-    element *new = (element *)malloc(sizeof(element));
-    new->value = e;
+listf insererQueue(listf l, char e[1000]) {
+    elementf *new = (elementf *)malloc(sizeof(elementf));
+    strncpy(new->value, e,1000);
     new->next = NULL;
-    if (l == NULL) {
+    if (siVide(l)) {
         return new;
     }else {
-        element *p = l;
+        elementf *p = l;
         while (p->next != NULL) {
             p = p->next;
         }
@@ -20,8 +22,8 @@ listf insererQueue(listf l, int e) {
 }
 
 listf supprimertout(listf l) {
-    element *p;
-    while (l != NULL) {
+    elementf *p;
+    while (!siVide(l)) {
         p=l;
         l=l-> next;
         free(p);
@@ -29,46 +31,51 @@ listf supprimertout(listf l) {
     return l;
 }
 
-listf supprimer_element(listf l, int e) {
-    if (l == NULL) {
+listf supprimer_element(listf l, char e[1000]) {
+    if (siVide(l)) {
         return NULL;
     }
-    if (l->value == e) {
-        element *tmp = l;
+    if (strcmp(l->value,e)==0) {
+        elementf *tmp = l;
         l = l->next;
         free(tmp);
         return l;
     }
-    element *p = l;
-    while (p->next != NULL && p->next->value != e) {
+    elementf *p = l;
+    while (p->next != NULL && strcmp(p->next->value,e)!=0) {
         p = p->next;
     }
     if (p->next == NULL) {
         return l;
     }else {
-        element *tmp = p->next;
+        elementf *tmp = p->next;
         p->next = tmp->next;
         free(tmp);
         return l;
     }
 }
-listf insererTete (listf l, int e) {
-    element *new = (element *)malloc(sizeof(element));
-    new->value = e;
+listf insererTete (listf l, char e[1000]) {
+    elementf *new = (elementf *)malloc(sizeof(elementf));
+    strncpy(new->value,e,1000);
     new->next = l;
     return new;
 }
+
 bool siVide(listf l) {
-    if (l == NULL) {
-        return NULL;
-    }return 1;
+    // Si l est NULL, c'est vide (Vrai), sinon Faux.
+    return (l == NULL);
 }
-bool recherche(listf l, int e) {
-    if (l != NULL) {
-        if (l->value == e) {
-            return 1;
-        }else {return recherche(l->next, e);}
-    }else {
-        return NULL;
+bool recherche(listf l, char *e) {
+    // Cas de base trivial
+    if (l == NULL) {
+        return false; // Pas trouvé (0)
+    }
+    
+    // Comparaison
+    if (strcmp(l->value, e) == 0) {
+        return true; // Trouvé ! (1)
+    } else {
+        // On continue de chercher dans la suite
+        return recherche(l->next, e);
     }
 }
