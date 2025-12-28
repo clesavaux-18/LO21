@@ -1,15 +1,20 @@
 #include "baseConnaissance.h"
 #include <stdbool.h>
+
 //lise chainée<regeles>:ajout en queue:créer base de connaisance vide/accéder a la règle en tete
 BaseConnaissance creerBaseConnaissanceVide() {
     return NULL;
 }
+
+//prend en paramètre une base de connaisace BC.elle renvoie 1 si oui et 0 si non.
 bool estVideBaseConnaissance(BaseConnaissance BC) {
     elementBC *p = BC;
     if (BC == NULL) {
         return 1;
     }return 0;
 }
+
+//prend en paramètre une base de connaisance BC et un pointeur vers une regle e .Le programe retourne la BC avec la règle e ajouté a cellle ci 
 BaseConnaissance insererQueueBaseConnaissance(BaseConnaissance BC, regle *e) {
     elementBC *new = (elementBC *)malloc(sizeof(elementBC));
     new->connaissance = e;
@@ -25,12 +30,13 @@ BaseConnaissance insererQueueBaseConnaissance(BaseConnaissance BC, regle *e) {
     }
     return BC;
 }
+
+//prend en paramètre un une base de connaisance BC et un pointeur vers une règle e. La fonction retourne la base avec la regle e enlevé si elle etait presente.
 BaseConnaissance supprimerUNEBaseConnaissance(BaseConnaissance BC, regle *e) {
     if (estVideBaseConnaissance(BC)) {
         return NULL;
     }
 
-    // --- CORRECTION CRITIQUE ICI ---
     // Cas 1 : Suppression de la TÊTE
     if (BC->connaissance == e) {
         elementBC *temp = BC; // On garde une trace de l'élément à supprimer
@@ -54,6 +60,8 @@ BaseConnaissance supprimerUNEBaseConnaissance(BaseConnaissance BC, regle *e) {
         return BC;
     }
 }
+
+//prend en paramètre une base de connaisance BC et retourne aune base vide après avoir supprimé tout les éléments.
 BaseConnaissance supprimertoutBaseConnaissance(BaseConnaissance BC) {
     elementBC *p;
     while (!estVideBaseConnaissance(BC)) {
