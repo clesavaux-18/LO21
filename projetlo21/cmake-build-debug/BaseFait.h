@@ -9,17 +9,17 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef struct elem {
-    int value;
-    struct elem *next;
-}element;
-typedef element* listf;
+typedef struct elemf {
+    char value[1000];
+    struct elemf *next;
+}elementf;
+typedef elementf* listf;
 
-listf insererQueue(listf l, int e);
+listf insererQueue(listf l, char e[1000]);
 listf supprimertout(listf l);
-listf supprimer_element(listf l, int e);
-listf insererTete (listf l, int e);
+listf supprimer_element(listf l, char e[1000]);
+listf insererTete (listf l, char e[1000]);
 bool siVide(listf l);
-bool recherche(listf l, int e);
+bool recherche(listf l, char e[1000]);
 
 #endif //BASEFAIT_H
