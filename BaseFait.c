@@ -2,6 +2,8 @@
 #include <string.h>
 #include "BaseFait.h"
 
+/*-----------------------------------------/OPERATIONS/---------------------------------------------------------------------------------------------------*/
+
 //prend en paramètre une liste de fait l(base de fait) et ajoute en queue un fait e chaine de charactère. la fonction retourne la listef ainsi modifié
 listf insererQueue(listf l, char e[1000]) {
     elementf *new = (elementf *)malloc(sizeof(elementf));
@@ -61,6 +63,8 @@ listf insererTete (listf l, char e[1000]) {
     return new;
 }
 
+/*-----------------------------------------/VERIFICATIONS/---------------------------------------------------------------------------------------------------*/
+
 //prend en paramètre une une liste l et vérifie si elle est vide. la fonction retourne une 1 si oui et un 0 si non 
 bool siVide(listf l) {
     // Si l est NULL, c'est vide (Vrai), sinon Faux.
@@ -83,3 +87,4 @@ bool recherche(listf l, char *e) {
     }
 
 }
+
