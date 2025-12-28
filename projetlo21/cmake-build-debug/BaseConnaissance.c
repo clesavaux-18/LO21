@@ -1,20 +1,16 @@
 #include "baseConnaissance.h"
 #include <stdbool.h>
 //lise chainée<regeles>:ajout en queue:créer base de connaisance vide/accéder a la règle en tete
-BaseConnaissance* creerBaseConnaissanceVide() {
-    BaseConnaissance NouvelleBaseConnaissance = (BaseConnaissance *)malloc(sizeof(BaseConnaissance));//alocation dynamique donc pointeur vers un  une règle
-
-    NouvelleBaseConnaissance->connaissance = creerRegleVide();
-    NouvelleBaseConnaissance->next = NULL;
-    return NouvelleBaseConnaissance;
+BaseConnaissance creerBaseConnaissanceVide() {
+    return NULL;
 }
-bool estVideBaseConnaissance(BaseConnaissance *BC) {
+bool estVideBaseConnaissance(BaseConnaissance BC) {
     elementBC *p = BC;
-    if (p->connaissance == NULL) {
-        return NULL;
-    }return 1;
+    if (BC == NULL) {
+        return 1;
+    }return 0;
 }
-BaseConnaissance insererQueueBaseConnaissance(BaseConnaissance *BC, regle *e) {
+BaseConnaissance insererQueueBaseConnaissance(BaseConnaissance BC, regle *e) {
     elementBC *new = (elementBC *)malloc(sizeof(elementBC));
     new->connaissance = e;
     new->next = NULL;
@@ -27,36 +23,37 @@ BaseConnaissance insererQueueBaseConnaissance(BaseConnaissance *BC, regle *e) {
         }
         p->next = new;
     }
-    return *BC;
+    return BC;
 }
-BaseConnaissance supprimerUNEBaseConnaissance(BaseConnaissance *BC, regle *e) {
+BaseConnaissance supprimerUNEBaseConnaissance(BaseConnaissance BC, regle *e) {
     if (estVideBaseConnaissance(BC)) {
         return NULL;
     }
     elementBC *l = BC;
     if (l->connaissance == e) {
         l = l->next;
-        return *BC;
+        return BC;
     }
+    
     elementBC *p = l;
     while (p->next != NULL && p->next->connaissance != e) {
         p = p->next;
     }
     if (p->next == NULL) {
-        return *BC;
+        return BC;
     }else {
         elementBC *tmp = p->next;
         p->next = tmp->next;
         free(tmp);
-        return *BC;
+        return BC;
     }
 }
-BaseConnaissance supprimertoutBaseConnaissance(BaseConnaissance *BC) {
+BaseConnaissance supprimertoutBaseConnaissance(BaseConnaissance BC) {
     elementBC *p;
-    while (estVideBaseConnaissance(BC)) {
+    while (!estVideBaseConnaissance(BC)) {
         p=BC;
-        p=p-> next;
+        BC=BC-> next;
         free(p);
     }
-    return *BC;
+    return BC;
 }
