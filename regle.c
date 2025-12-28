@@ -15,7 +15,7 @@ regle* creerRegleVide() {
     return nouvelleRegle;
 }
 
-/*-----------------------------------------/CONCLUSION/---------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------/OPERATIONS CONCLUSION/---------------------------------------------------------------------------------------------------*/
 
 //prend en paramètre un pointeur vers une règle r et permet de remplire la chaine de charactère conclusion de celle ci .
 void saisirConclusion(regle *r) {
@@ -45,7 +45,7 @@ void afficherConclusion(regle *r) {
     }
 }
 
-/*-----------------------------------------/PREMISSE/---------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------/OPERATIONS PREMISSE/---------------------------------------------------------------------------------------------------*/
 
 //prend en paramètre un pointeur vers une règle r et un pointeur vers un texte et permet d'ajoutere le texte a la liste chainé de chaines de charactère premisse
 // retourne un pointeur vers la règle modifié
