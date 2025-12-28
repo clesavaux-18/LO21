@@ -3,6 +3,8 @@
 #include <string.h> 
 #include "regle.h"
 
+
+//permet de créer une regle vide et retourne un pointeur vers celle ci.
 regle* creerRegleVide() {
     regle *nouvelleRegle = (regle *)malloc(sizeof(regle));//alocation dynamique donc pointeur vers un  une règle 
 
@@ -12,6 +14,7 @@ regle* creerRegleVide() {
     return nouvelleRegle;
 }
 
+//prend en paramètre un pointeur vers une règle r et permet de remplire la chaine de charactère conclusion de celle ci .
 void saisirConclusion(regle *r) {
     if (r == NULL) {
         printf("Erreur : La règle fournie est vide (NULL).\n");
@@ -28,6 +31,7 @@ void saisirConclusion(regle *r) {
     }
 }
 
+//prend en paramètre un pointeur vers une règle r et permet d'afficher la conclusion de celle ci 
 void afficherConclusion(regle *r) {
     if (r != NULL) {
         if (r->conclusion[0] == '\0') {
@@ -38,6 +42,8 @@ void afficherConclusion(regle *r) {
     }
 }
 
+//prend en paramètre un pointeur vers une règle r et un pointeur vers un texte et permet d'ajoutere le texte a la liste chainé de chaines de charactère premisse
+// retourne un pointeur vers la règle modifié
 regle *ajouterPremisse(regle *r, char *texte) {
     if (r == NULL) return NULL; 
 
@@ -61,6 +67,7 @@ regle *ajouterPremisse(regle *r, char *texte) {
     return r;
 }
 
+//prend en paramètre un pointeur vers une règle r et permet de dire si la prémisse de r est vide ,  retourne 1 si oui et 0 sinon
 int premisseEstVide(regle *r) {
     if (r == NULL) return 1;
     if (r->premisse == NULL) {
@@ -70,6 +77,7 @@ int premisseEstVide(regle *r) {
     }
 }
 
+//prend en paramètre un pointeur vers une règle r et un pointeur vers une proposition. renvoie 1 si la proposition est presente dans la premisse de r et 0 sinon
 int rechercheRecursive(element *p, char *proposition) {
     if (p == NULL) {
         return 0; 
@@ -85,6 +93,8 @@ int rechercheRecursive(element *p, char *proposition) {
     }
 }
 
+//prend en paramètre un pointeur vers une règle r et un pointeur vers un texte . permet de retirer texte de la premisse de r. 
+//retourne un pointeur vers la règle modifié
 regle *supprimerPremisse(regle *r, char *texte) {
     // verif
     if (r == NULL) return NULL;
