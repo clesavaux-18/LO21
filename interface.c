@@ -19,7 +19,7 @@ int interfacegene() {
     do {
         printf("Que voulez vous faire ?\n"
         "1. Alimenter la base de connaissance\n"
-        "2. Tester la base de connaissance (afficher)\n"
+        "2. Tester la base de connaissance\n"
         "3. Quitter\n");
         scanf("%d", &rep);
     } while (!(rep == 1 || rep == 2 || rep == 3));
