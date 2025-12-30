@@ -19,7 +19,7 @@ int interfacegene() {
     do {
         printf("Que voulez vous faire ?\n"
         "1. Alimenter la base de connaissance\n"
-        "2. Tester la base de connaissance\n"
+        "2. Tester la base de connaissance (afficher)\n"
         "3. Quitter\n");
         scanf("%d", &rep);
     } while (!(rep == 1 || rep == 2 || rep == 3));
@@ -131,7 +131,6 @@ int interfacefait() {
         printf("Que voulez vous faire ?\n"
             "1.Creer une liste de fait vide\n"
             "2.Gerer la liste\n"
-            "3.Afficher la liste\n"
             "3.Retour\n");
         scanf("%d",&rep);
 
@@ -142,11 +141,7 @@ int interfacefait() {
         if (rep == 2) {
             interface_gestion_fait(&LF);
         }else {
-            if (rep==3) {
-                afficherListeFait(&LF);
-            }else{
             interfacegene();
-            }
         }
     }
     } while (rep!=3);
@@ -236,7 +231,7 @@ int interface_gestion_regle(regle *r) {
 int interfaceregle() {
     int rep;
     do {
-        printf("Que voulez vous faire ?"
+        printf("Que voulez vous faire ?\n"
         "1. Creer une base de connaissance vide\n"
         "2. Ajouter une regle\n"
         "3. Afficher la base de connaissance\n"
@@ -306,6 +301,7 @@ void afficherBaseConnaissance(BaseConnaissance BC) {
         i++;
     }
 }
+
 
 listf creeListeFaitVide() {
     return NULL;
