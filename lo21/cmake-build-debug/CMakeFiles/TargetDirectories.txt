@@ -1,0 +1,3 @@
+C:/Users/micro/Downloads/swisstransfer_3260ecc5-49d1-4373-ada2-75043393fa80/lo21/cmake-build-debug/CMakeFiles/lo21.dir
+C:/Users/micro/Downloads/swisstransfer_3260ecc5-49d1-4373-ada2-75043393fa80/lo21/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/micro/Downloads/swisstransfer_3260ecc5-49d1-4373-ada2-75043393fa80/lo21/cmake-build-debug/CMakeFiles/rebuild_cache.dir
