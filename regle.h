@@ -1,19 +1,24 @@
-#include <stdlib.h> 
-#include <stdio.h>
-#include <string.h> 
+//
+// Created by aysse on 29/12/2025.
+//
 
+#ifndef REGLE_H
+#define REGLE_H
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 typedef struct elem {
-     char proposition[1000];
-     struct elem *next;
+    char proposition[1000];
+    struct elem *next;
 } element;
 
 typedef element *premisse;
 
-
 typedef struct {
-     premisse premisse;     
-     char conclusion[1000]; 
+    premisse premisse;
+    char conclusion[1000];
 } regle;
 
 regle *creerRegleVide();
@@ -23,3 +28,9 @@ regle *ajouterPremisse(regle *r, char *texte);
 int premisseEstVide(regle *r);
 int rechercheRecursive(element *p, char *proposition) ;
 regle *supprimerPremisse(regle *r, char *texte);
+void afficherPremisse(regle *r);
+
+int supprimerelem(element *tabpropo);
+
+
+#endif //REGLE_H

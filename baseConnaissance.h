@@ -1,20 +1,28 @@
-#ifndef __LISTE_H__ 
-#define __LISTE_H__
+//
+// Created by aysse on 29/12/2025.
+//
 
-#include <stdlib.h> 
+#ifndef BASECONNAISSANCE_H
+#define BASECONNAISSANCE_H
+
+
+#include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "regle.h"
 
 typedef struct elemBC {
-	 regle *connaissance;
-	 struct elemBC *next;
+    regle *connaissance;
+    struct elemBC *next;
 } elementBC;
 
 typedef elementBC * BaseConnaissance;
-//fonction1
-//fonction2
-//fonction3
-//...
 
+BaseConnaissance creerBaseConnaissanceVide();
+bool estVideBaseConnaissance(BaseConnaissance BC);
+BaseConnaissance insererQueueBaseConnaissance(BaseConnaissance BC, regle *e);
+BaseConnaissance supprimerUNEBaseConnaissance(BaseConnaissance BC, regle *e);
+BaseConnaissance supprimertoutBaseConnaissance(BaseConnaissance BC);
+regle *rechercheBCtoregle(BaseConnaissance BC,char e[1000]);
 
-#endif 
+#endif //BASECONNAISSANCE_H
