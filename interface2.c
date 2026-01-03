@@ -372,11 +372,10 @@ listf TEST(listf BF, BaseConnaissance *BC) {
             // Si la règle est déclenchée
             if (premisseEstVide(r)) { //
                 
-                // On vérifie les doublons dans BF (ce qui reste à traiter)
-                // ET dans Dedui (ce qu'on a déjà trouvé) pour être propre
+               
                 if (!recherche(BF, r->conclusion) && !recherche(Dedui, r->conclusion)) { //
                     
-                    // Ajout à BF (en queue) -> La boucle while(!siVide(BF)) finira par le traiter !
+                   
                     BF = insererQueue(BF, r->conclusion); //
                     
                     // Ajout aux résultats
@@ -388,12 +387,12 @@ listf TEST(listf BF, BaseConnaissance *BC) {
             r = rechercheBCtoregle(*BC, faitActuel); 
         }
         
-        // Pas besoin de 'faitCourant = faitCourant->next' 
-        // car on a supprimé la tête. Le "nouveau" BF est donc naturellement le suivant.
+        
     }
     
     return Dedui;
 }
+
 
 
 
