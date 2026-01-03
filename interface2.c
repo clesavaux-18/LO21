@@ -348,19 +348,15 @@ listf TEST(listf BF, BaseConnaissance *BC) {
     listf Dedui = creeListeFaitVide(); //
 
     // TANT QUE la liste de faits n'est pas vide
-    while (!siVide(BF)) { //
-
-        // 1. On récupère la valeur du fait en TÊTE de liste (le premier)
-        // On utilise un buffer pour stocker le texte car on va supprimer l'élément juste après
+    while (!siVide(BF)) { 
+        
         char faitActuel[1000];
         strcpy(faitActuel, BF->value); 
         
-        // 2. On retire TOUT DE SUITE ce fait de la liste BF
-        // Comme ça, on évite les problèmes de mémoire plus tard.
-        // On récupère le retour car la tête de liste change !
+        // On retire TOUT DE SUITE ce fait de la liste
         BF = supprimer_element(BF, faitActuel); //
 
-        // 3. On cherche la première règle contenant ce fait
+        // On cherche la première règle contenant ce fait
         regle *r = rechercheBCtoregle(*BC, faitActuel); //
 
         // Boucle sur toutes les règles concernées
@@ -392,6 +388,7 @@ listf TEST(listf BF, BaseConnaissance *BC) {
     
     return Dedui;
 }
+
 
 
 
